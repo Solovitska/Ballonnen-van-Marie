@@ -244,7 +244,17 @@
             color: var(--text-light);
             text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
         }
+        /* 📱 FIX для мобільних */
+        @media (max-width: 768px) {
+           #home {
+    background-attachment: scroll;   /* прибираємо баг parallax */
+    background-position: center top; /* краще кадрування */
+  }
 
+  #home::before {
+    background-color: rgba(0, 0, 0, 0.25); /* менше затемнення */
+  }
+}
         /* --- About Section --- */
         #about .container {
             display: flex;
