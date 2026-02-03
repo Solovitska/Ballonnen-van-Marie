@@ -810,53 +810,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =========================
-     Mobile Navigation
-  ========================= */
-  const menuToggle = document.getElementById('menu-toggle');
-  const navbar = document.getElementById('navbar');
-
-  if (menuToggle && navbar) {
-    menuToggle.addEventListener('click', () => {
-      navbar.classList.toggle('active');
-    });
-
-    navbar.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navbar.classList.remove('active');
-      });
-    });
-  }
-
-  /* =========================
-     Active Link on Scroll
-  ========================= */
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('#navbar a.nav-link');
-
-  if (sections.length && navLinks.length && 'IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-
-          navLinks.forEach(link => {
-            link.classList.toggle(
-              'active',
-              link.getAttribute('href') === `#${entry.target.id}`
-            );
-          });
-        });
-      },
-      {
-        threshold: 0.5,
-        rootMargin: '-80px 0px 0px 0px'
-      }
-    );
-
-    sections.forEach(section => observer.observe(section));
-  }
-
-  /* =========================
      Portfolio Lightbox
   ========================= */
   const lightbox = document.getElementById('lightbox');
